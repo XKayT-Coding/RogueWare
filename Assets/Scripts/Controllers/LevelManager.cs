@@ -22,7 +22,7 @@ namespace Controllers
             if (SceneManager.GetActiveScene().buildIndex + 1 >= SceneManager.sceneCount)
             {
                 // If a scene doesn't exist, it will just reload the current scene for now
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                ReloadLevel();
             }
             else
             {
@@ -31,6 +31,13 @@ namespace Controllers
                 // If a scene does exist, then we'll go there!
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
+        }
+
+        // This logic loads in the same scene that the player is already on. This is used for the game over screen,
+        // but also in the case of trying to move to a scene that doesn't exist.
+        public void ReloadLevel()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }

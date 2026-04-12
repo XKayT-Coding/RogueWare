@@ -2,6 +2,7 @@ using MoreMountains.Feedbacks;
 using TMPro;
 using UI;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Controllers
 {
@@ -30,6 +31,10 @@ namespace Controllers
         private PlayerController _playerController;
         public PlayerHealthUI healthUI;
         private MMF_Player _mmf;
+        
+        // For ease of use, we set up a Unity Event for onDeath - this means that we can make things happen
+        // when the player dies automatically
+        public UnityEvent onDeath;
 
         private void Start()
         {
@@ -47,8 +52,7 @@ namespace Controllers
             // Hard force maxhealth to = health on Start
             maxHealth = health;
         }
-    
-
+        
         private void Update()
         {
             // As this game has invulnerability, these lines make sure that the object can't
@@ -120,6 +124,9 @@ namespace Controllers
         private void Die()
         {
             // As mentioned earlier, if health is zero or below, the character dies
+            // We trigger the Unity Event for onDeath - anything we've set up for this event in Unity will be triggered
+            // In the example scene, you will see that the Game Over window is triggered to "SetActive(true)" in this event
+            onDeath.Invoke();
             // We destroy the game object
             Destroy(gameObject);
         }
