@@ -3,20 +3,31 @@ using UnityEngine;
 public class Door_Logic : MonoBehaviour
 {
    public bool isOpen;
-
-   private SpriteRenderer renderer;
+   public Sprite doorOpen, doorClose;
+   private SpriteRenderer _renderer;
+   private BoxCollider2D _boxCollider2D;
    
    private void Start()
    {
-      renderer = GetComponent<SpriteRenderer>();
+      _renderer = GetComponent<SpriteRenderer>();
+      _boxCollider2D = GetComponent<BoxCollider2D>();
    }
    
-   private void OpenDoor()
+   public void OpenDoor()
    {
       if (isOpen) return;
-      renderer.sprite = Resources.Load<Sprite>("Door_Open");
+      _renderer.sprite = doorOpen;
+      _boxCollider2D.enabled = false;
+      isOpen = true;
    }
-   
+
+   public void CloseDoor()
+   {
+      if (!isOpen) return;
+      _renderer.sprite = doorClose;
+      _boxCollider2D.enabled = true;
+      isOpen = false;
+   }
 }
 
 
