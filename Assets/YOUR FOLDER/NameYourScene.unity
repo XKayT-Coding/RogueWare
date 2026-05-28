@@ -1184,6 +1184,7 @@ GameObject:
   - component: {fileID: 551889981}
   - component: {fileID: 551889980}
   - component: {fileID: 551889982}
+  - component: {fileID: 551889983}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -1262,7 +1263,7 @@ Transform:
   - {fileID: 1628044795}
   - {fileID: 1195987435}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 5.6941385, z: 0}
 --- !u!114 &551889982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1294,6 +1295,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!111 &551889983
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551889979}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: 3c3042eb0a5bf8d4ba5f878309e04ea1, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 3c3042eb0a5bf8d4ba5f878309e04ea1, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1 &572048123
 GameObject:
   m_ObjectHideFlags: 0
