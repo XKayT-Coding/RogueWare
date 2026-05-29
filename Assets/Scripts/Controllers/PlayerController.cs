@@ -1,5 +1,6 @@
 using UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 using static UnityEngine.Input;
 using static UnityEngine.KeyCode;
 
@@ -29,6 +30,12 @@ namespace Controllers
         // Ignore these, but this is a selection of bools to check if the player is moving
         // so that our animator knows when to stop. A fun trick but not required!
         private bool _downA, _downW, _downS, _downD;
+
+        public Transform torch; // Reference for the Torch
+        public Vector3 torchRightPosition;
+        public Vector3 torchLeftPosition;
+
+        public Transform light;
         
         void Start()
         {
@@ -109,6 +116,18 @@ namespace Controllers
                 {
                     isJumping = false;
                 }
+            }
+            
+            // My Torch Sprite code that will flip the direction of the torch if the Player moves left or right
+            if (horizontal > 0)
+            {
+                torch.localPosition = torchRightPosition;
+                torch.localRotation = Quaternion.Euler(0, 0, -90);
+            }
+            else if (horizontal < 0)
+            {
+                torch.localPosition = torchLeftPosition;
+                torch.localRotation = Quaternion.Euler(0, 0, 90);
             }
         }
 

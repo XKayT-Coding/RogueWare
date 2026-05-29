@@ -22,6 +22,8 @@ namespace Controllers
         // the player be near more than one or this won't work properly!
         private Interactable _interactableObject;
 
+        public int batteryCount = 0; 
+
         private void Start()
         {
             // Turn off the UI object as the game begins if its been left on
@@ -32,6 +34,14 @@ namespace Controllers
         // It should also have the "Interactable" component, otherwise none of this will work 
         private void OnTriggerEnter2D(Collider2D col)
         {
+            // For battery pickups
+            if (col.CompareTag("Battery"))
+            {
+                batteryCount++;
+                Destroy(col.gameObject);
+                return;
+            }
+            
             // If it doesn't have either the tag or the component, then it won't work
             if (!col.CompareTag("Interactable") || col.GetComponent<Interactable>().hasInteracted) return;
 

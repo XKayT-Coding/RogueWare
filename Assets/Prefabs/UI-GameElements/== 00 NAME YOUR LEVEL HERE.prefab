@@ -44,5 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bded5ecc740e345e7ae899d0ad81be44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: A Test Level
-  yourName: By Ryan
+  levelName: Keystone Project
+  yourName: By Kathryn

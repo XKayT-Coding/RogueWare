@@ -1,14 +1,10 @@
 fileFormatVersion: 2
-guid: f9d96f4e7a15ef24c8c757d3388b9c20
-AssetOrigin:
-  serializedVersion: 1
-  productId: 131764
-  packageName: Free Game Items
-  packageVersion: 1.0
-  assetPath: Assets/Free Game Items/preview.png
-  uploadId: 275016
+guid: 6b7d6726e3a06e045b429809a6dda5b6
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -8414381652109580173
+    second: Torch Light_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -70,9 +66,9 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
@@ -104,45 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Torch
+      name: Torch Light_0
       rect:
         serializedVersion: 2
-        x: 474
-        y: 31
-        width: 87
-        height: 179
-      alignment: 9
-      pivot: {x: 0.5642069, y: 0.4937583}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9e07415e61c3bd64f9d49d491d47bda8
-      internalID: -1029861431
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Inventory
-      rect:
-        serializedVersion: 2
-        x: 624
-        y: 705
-        width: 171
-        height: 120
+        x: 0
+        y: 0
+        width: 547
+        height: 589
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 1b3bfbfea71230549bd3029e594a2493
-      internalID: -1675149713
+      spriteID: 378a17df77c1a3b80800000000000000
+      internalID: -8414381652109580173
       vertices: []
       indices: 
       edges: []
@@ -151,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4f97be9f9fca5194b9e2bed7880df6de
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -161,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Inventory: -1675149713
-      Torch: -1029861431
+      Torch Light_0: -8414381652109580173
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
