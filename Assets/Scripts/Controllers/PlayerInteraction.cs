@@ -21,13 +21,23 @@ namespace Controllers
         // We store a copy of the interactable that we're near. It's important to not let
         // the player be near more than one or this won't work properly!
         private Interactable _interactableObject;
-
-        public int batteryCount = 0; 
+        
+        // My Battery variables and drain system variables
+        public int maxBatteries = 3;
+        public int batteryCount = 3;
+        public TMP_Text batteryText;
+        public Transform lightObject;
+        public float batteryDrainTime = 10f;
+        private float _batteryTimer;
 
         private void Start()
         {
             // Turn off the UI object as the game begins if its been left on
             interactableUI.gameObject.SetActive(false);
+            
+            // Setting the UI to display the number of batteries on screen + implementing drain timer
+            batteryText.text = batteryCount + " / " + maxBatteries;
+            _batteryTimer = batteryDrainTime;
         }
 
         // On trigger, we check if the collision object has the tag "Interactable". Make sure that it does!!!
@@ -37,8 +47,12 @@ namespace Controllers
             // For battery pickups
             if (col.CompareTag("Battery"))
             {
-                batteryCount++;
-                Destroy(col.gameObject);
+                if (batteryCount < maxBatteries) 
+                {
+                    batteryCount = Mathf.Clamp(batteryCount + 1, 0, maxBatteries);
+                    batteryText.text = batteryCount + " / 3";
+                    Destroy(col.gameObject);
+                }
                 return;
             }
             
@@ -67,6 +81,7 @@ namespace Controllers
 
         private void Update()
         {
+            Debug.Log("Timer Running");
             // This is where our bool comes in - if we don't have an interactable object nearby
             // then the update won't do anything at all
             if (!_isNearInteractable) return;
@@ -76,6 +91,19 @@ namespace Controllers
             if (GetKeyDown(_interactableObject.requiredInput) && _interactableObject != null && !DialogueSystem.IsActive)
             {
                 _interactableObject.Interact();
+            }
+            
+            // Drain Logic
+            _batteryTimer -= Time.deltaTime;
+            Debug.Log(_batteryTimer);
+            
+            if (_batteryTimer <= 0 && batteryCount > 0)
+            {
+                Debug.Log("Battery Drained");
+                Debug.Log("Battery Count: " + batteryCount);
+                batteryCount--;
+                batteryText.text = batteryCount + " / " + maxBatteries;
+                _batteryTimer = batteryDrainTime;
             }
         }
     }

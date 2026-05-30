@@ -614,7 +614,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableUI: {fileID: 1860961294}
-  batteryCount: 0
+  maxBatteries: 3
+  batteryCount: 3
+  batteryText: {fileID: 1216977517}
+  lightObject: {fileID: 0}
+  batteryDrainTime: 10
 --- !u!114 &93018550 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2047020608938000378, guid: 55e557f8945e90a4fb4e417c129f1459, type: 3}
@@ -1822,7 +1826,7 @@ GameObject:
   - component: {fileID: 1216977518}
   - component: {fileID: 1216977517}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: Battery Count
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
