@@ -1,3 +1,4 @@
+using System;
 using Interactables;
 using TMPro;
 using UI;
@@ -26,9 +27,16 @@ namespace Controllers
         public int maxBatteries = 3;
         public int batteryCount = 3;
         public TMP_Text batteryText;
-        public Transform lightObject;
         public float batteryDrainTime = 10f;
         private float _batteryTimer;
+        
+        // My Light variables
+        public Transform lightObject;
+        public CircleCollider2D lightCollider;
+
+        private Vector3 _originalLightScale;
+        private float _originalColliderRadius;
+        
 
         private void Start()
         {
@@ -38,6 +46,12 @@ namespace Controllers
             // Setting the UI to display the number of batteries on screen + implementing drain timer
             batteryText.text = batteryCount + " / " + maxBatteries;
             _batteryTimer = batteryDrainTime;
+            
+            //Caching original values 
+            _originalLightScale = lightObject.localScale;
+            _originalColliderRadius = lightCollider.radius;
+            
+            UpdateLightSystem();
         }
 
         // On trigger, we check if the collision object has the tag "Interactable". Make sure that it does!!!
@@ -51,7 +65,9 @@ namespace Controllers
                 {
                     batteryCount = Mathf.Clamp(batteryCount + 1, 0, maxBatteries);
                     batteryText.text = batteryCount + " / 3";
+                    _batteryTimer = batteryDrainTime;
                     Destroy(col.gameObject);
+                    UpdateLightSystem();
                 }
                 return;
             }
@@ -78,10 +94,62 @@ namespace Controllers
             _isNearInteractable = false;
             _interactableObject = null;
         }
+        
+        // Core Light System
+        private void UpdateLightSystem()
+        {
+            float batteryPercent = (float) batteryCount / maxBatteries;
+            
+            batteryPercent = Mathf.Pow(batteryPercent, 0.5f);
+            batteryPercent = Mathf.Clamp(batteryPercent, 0, 1);
+
+            bool hasBattery = batteryCount > 0;
+
+            lightObject.gameObject.SetActive(hasBattery);
+            lightCollider.enabled = hasBattery;
+
+            if (!hasBattery)
+            {
+                return;
+            }
+            
+            lightObject.localScale = _originalLightScale * batteryPercent;
+            lightCollider.radius = _originalColliderRadius * batteryPercent;
+        }
 
         private void Update()
         {
             Debug.Log("Timer Running");
+
+            if (batteryCount <= 0)
+            {
+                _batteryTimer = 0f;
+                return;
+            }
+            
+            // Drain Logic
+            _batteryTimer -= Time.deltaTime;
+            Debug.Log(_batteryTimer);
+            
+            if (_batteryTimer <= 0f && batteryCount > 0)
+            {
+                Debug.Log("Battery Drained");
+                Debug.Log("Battery Count: " + batteryCount);
+                batteryCount = Mathf.Max(0, batteryCount - 1);
+                batteryText.text = batteryCount + " / " + maxBatteries;
+                _batteryTimer = batteryDrainTime;
+                UpdateLightSystem();
+
+                if (batteryCount <= 0)
+                {
+                    batteryText.text = "Find more batteries!";
+                }
+                else
+                {
+                    batteryText.text = batteryCount + " / " + maxBatteries; 
+                }
+            }
+            
             // This is where our bool comes in - if we don't have an interactable object nearby
             // then the update won't do anything at all
             if (!_isNearInteractable) return;
@@ -91,19 +159,6 @@ namespace Controllers
             if (GetKeyDown(_interactableObject.requiredInput) && _interactableObject != null && !DialogueSystem.IsActive)
             {
                 _interactableObject.Interact();
-            }
-            
-            // Drain Logic
-            _batteryTimer -= Time.deltaTime;
-            Debug.Log(_batteryTimer);
-            
-            if (_batteryTimer <= 0 && batteryCount > 0)
-            {
-                Debug.Log("Battery Drained");
-                Debug.Log("Battery Count: " + batteryCount);
-                batteryCount--;
-                batteryText.text = batteryCount + " / " + maxBatteries;
-                _batteryTimer = batteryDrainTime;
             }
         }
     }

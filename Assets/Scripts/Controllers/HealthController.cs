@@ -7,8 +7,7 @@ using UnityEngine.Events;
 namespace Controllers
 {
     public class HealthController : MonoBehaviour
-    {
-        // Welcome to the Health Controller! This script will interact with the Health of our player
+    {// Welcome to the Health Controller! This script will interact with the Health of our player
         // and enemies - the clue is in the name. Feel free to look through this script and figure out
         // how everything works!
         
