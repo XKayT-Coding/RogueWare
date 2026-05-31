@@ -34,6 +34,7 @@ namespace Controllers
         // For ease of use, we set up a Unity Event for onDeath - this means that we can make things happen
         // when the player dies automatically
         public UnityEvent onDeath;
+        
 
         private void Start()
         {
@@ -128,6 +129,8 @@ namespace Controllers
             onDeath.Invoke();
             // We destroy the game object
             Destroy(gameObject);
+            
+            
         }
         
         

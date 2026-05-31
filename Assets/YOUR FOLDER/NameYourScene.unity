@@ -1415,8 +1415,9 @@ GameObject:
   m_Component:
   - component: {fileID: 551889981}
   - component: {fileID: 551889980}
+  - component: {fileID: 551889985}
   - component: {fileID: 551889982}
-  - component: {fileID: 551889983}
+  - component: {fileID: 551889984}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Ghost
@@ -1497,7 +1498,7 @@ Transform:
   - {fileID: 1179712896}
   - {fileID: 1191497891}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 5.6941385, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 7.466, z: 0}
 --- !u!114 &551889982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1529,23 +1530,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!111 &551889983
-Animation:
+--- !u!114 &551889984
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 551889979}
   m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 3c3042eb0a5bf8d4ba5f878309e04ea1, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 3c3042eb0a5bf8d4ba5f878309e04ea1, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ebd7cc8cd807442a1acb86807c544e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 0}
+  moveSpeed: 1
+--- !u!95 &551889985
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551889979}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dc0b76fdbb544464c83d388edbcb455b, type: 2}
+  m_CullingMode: 0
   m_UpdateMode: 0
-  m_CullingType: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &572048123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,8 +1823,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22670cada8ddaf7478c59d74d8470bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostRoot: {fileID: 0}
-  moveSpeed: 0
 --- !u!58 &1179712898
 CircleCollider2D:
   m_ObjectHideFlags: 0

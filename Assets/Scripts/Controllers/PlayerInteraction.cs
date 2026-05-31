@@ -119,8 +119,6 @@ namespace Controllers
 
         private void Update()
         {
-            Debug.Log("Timer Running");
-
             if (batteryCount <= 0)
             {
                 _batteryTimer = 0f;
@@ -129,7 +127,6 @@ namespace Controllers
             
             // Drain Logic
             _batteryTimer -= Time.deltaTime;
-            Debug.Log(_batteryTimer);
             
             if (_batteryTimer <= 0f && batteryCount > 0)
             {
