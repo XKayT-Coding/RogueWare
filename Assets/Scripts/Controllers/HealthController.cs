@@ -128,9 +128,7 @@ namespace Controllers
             // In the example scene, you will see that the Game Over window is triggered to "SetActive(true)" in this event
             onDeath.Invoke();
             // We destroy the game object
-            //Destroy(gameObject);
-            
-            
+            Destroy(gameObject);
         }
         
         

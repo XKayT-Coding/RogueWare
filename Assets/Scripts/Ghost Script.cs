@@ -10,7 +10,7 @@ public class GhostScript : MonoBehaviour
     private bool _chasing;
     private bool _returning;
     private Vector3 _startPos;
-
+    
     void Start()
     {
         _startPos = transform.position;
@@ -52,6 +52,10 @@ public class GhostScript : MonoBehaviour
         _returning = true;
     }
     
+    public void GhostDie()
+    {
+        animator.Play("Ghost_Die");
+    }
     private void Update()
     {
         if (_chasing && _player != null)
@@ -76,5 +80,6 @@ public class GhostScript : MonoBehaviour
                 _returning = false;
             }
         }
+        
     }
 }
